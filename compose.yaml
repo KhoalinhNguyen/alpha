@@ -1,15 +1,15 @@
 version: "3"
 services:
-  server:
-    image: backend
-    ports:
-      - "8080:8080"
-    environment:
-      - spring.datasource.url=jdbc:mysql://mysqldb:3306/alphadb?useSSL=false
-    networks:
-      - springmysql-network
-    depends_on:
-      - mysqldb
+  # server:
+  #   image: backend
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - spring.datasource.url=jdbc:mysql://mysqldb:3306/alphadb?useSSL=false
+  #   networks:
+  #     - springmysql-network
+  #   depends_on:
+  #     - mysqldb
 
   mysqldb:
     image: mysql:8
