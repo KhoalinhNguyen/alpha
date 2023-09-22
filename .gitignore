@@ -3,3 +3,4 @@
 /.project
 /target/**
 *.class
+target/classes/META-INF/MANIFEST.MF
