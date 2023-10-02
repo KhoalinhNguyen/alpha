@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Linh.Alpha.Modell.User;
-import Linh.Alpha.Repository.AlphaRepository;
+import Linh.Alpha.Repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired
-	private AlphaRepository userRepository;
+	private UserRepository userRepository;
 	
 	@Override
 	public List<User> getAllUsers() {
