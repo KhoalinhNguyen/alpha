@@ -18,9 +18,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="employees")
+
 public class User implements UserDetails {
 
 	@Id
@@ -51,24 +60,6 @@ public class User implements UserDetails {
 	private Roles role;
 	
 	private String password;
-	
-
-	public User(long id, String firstName, String lastName, String email, long phoneNumber, String currentPosition,
-			String department, Roles role) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.currentPosition = currentPosition;
-		this.department = department;
-		this.role = role;
-	}
-
-	public User() {
-		super();
-	}
 
 	public long getId() {
 		return id;

@@ -1,4 +1,4 @@
-package Linh.Alpha.config;
+package Linh.Alpha.Security;
 
 import java.io.IOException;
 
