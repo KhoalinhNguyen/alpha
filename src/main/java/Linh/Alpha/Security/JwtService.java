@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JwtService {
 
-	private static final String SECRET_KEY = "BYMbgMDGTdRBzrTFDqtBfX8U7RFrjtCc";
+	private static final String SECRET_KEY = "BYMbgMDGTdRBzrTFDqtBfX8U7RFrjtCcBYMbgMDGTdRBzrTFDqtBfX8U7RFrjtCcBYMbgMDGTdRBzrTFDqtBfX8U7RFrjtCcBYMbgMDGTdRBzrTFDqtBfX8U7RFrjtCcBYMbgMDGTdRBzrTFDqtBfX8U7RFrjtCc";
 	
 	public String extractUsername(String token) {
 		return extractClaim(token, Claims::getSubject);

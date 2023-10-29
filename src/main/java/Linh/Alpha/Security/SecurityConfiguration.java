@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfiguration {
 
 		private final JwtAuthenticationFilter jwtAuthFilter;
-		private final AuthenticationProvider AuthenticationProvider;
+		private final AuthenticationProvider authenticationProvider;
 
 		//configuring all http security of the application
 		@Bean
@@ -31,17 +31,16 @@ public class SecurityConfiguration {
 			http
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(req ->
-				req.requestMatchers("/api/v1/auth/**") // white list
+				req.requestMatchers("/alpha/auth/**") // white list
 				.permitAll()
-				.requestMatchers(DELETE, "alpha//user/**").hasAnyRole(ADMIN.name())
+				//.requestMatchers(DELETE, "alpha/user/**").hasAnyRole(ADMIN.name()
+						//.requestMatchers("/alpha/").hasAnyRole(ADMIN.name())
 				.anyRequest()
 				.authenticated()
 				)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // create new session for each request
-				.authenticationProvider(AuthenticationProvider)
+				.authenticationProvider(authenticationProvider)
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-				
-				
 				
 			return http.build();
 		}

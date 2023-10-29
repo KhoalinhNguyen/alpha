@@ -1,16 +1,15 @@
 package Linh.Alpha.Security.Controller;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import Linh.Alpha.Modell.User;
 import Linh.Alpha.Repository.UserRepository;
 import Linh.Alpha.Security.JwtService;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.var;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,13 +25,19 @@ public class AuthenticationService {
 	
 	//create user, save to database, send generated token
 	public AuthenticationResponse register(RegisterRequest request) {
+		Optional<User> existingUser = repository.findByEmail(request.getEmail());
+		if(existingUser.isPresent()){
+			throw new IllegalArgumentException("User already exists with this email!");
+		}
+
 		var user = User.builder()
-				.firstName(request.getFirstname())
-				.lastName(request.getLastname())
+				.firstName(request.getFirstName())
+				.lastName(request.getLastName())
 				.email(request.getEmail())
 				.password(passwordEncoder.encode(request.getPassword()))
 				.role(request.getRole())
 				.build();
+
 		repository.save(user);
 		var jwtToken = jwtService.generateToken(user);
 		return AuthenticationResponse.builder()
