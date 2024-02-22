@@ -1,6 +1,7 @@
 package Linh.Alpha.Security;
 
 import org.hibernate.sql.Delete;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +22,9 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-
+		@Autowired
 		private final JwtAuthenticationFilter jwtAuthFilter;
+		@Autowired
 		private final AuthenticationProvider authenticationProvider;
 
 		//configuring all http security of the application
@@ -31,7 +33,8 @@ public class SecurityConfiguration {
 			http
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(req ->
-				req.requestMatchers("/alpha/auth/**") // white list
+				req.requestMatchers("/alpha/auth/**", "test/**") // white list //remove test later as i was testing with angular
+						//implement the login function from front end
 				.permitAll()
 				//.requestMatchers(DELETE, "alpha/user/**").hasAnyRole(ADMIN.name()
 						//.requestMatchers("/alpha/").hasAnyRole(ADMIN.name())

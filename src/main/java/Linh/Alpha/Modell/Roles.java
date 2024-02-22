@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import static Linh.Alpha.Modell.Permission.*;
 
+@Getter
 @RequiredArgsConstructor
 public enum Roles {
 
@@ -25,7 +26,6 @@ public enum Roles {
 			)
 	);
 
-	@Getter
 	private final Set<Permission> permissions;
 
 
