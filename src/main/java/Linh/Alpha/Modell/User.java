@@ -47,7 +47,7 @@ public class User implements UserDetails {
 	private String email;
 	
 	@Column
-	private long phoneNumber;
+	private String phoneNumber;
 	
 	@Column
 	private String currentPosition;

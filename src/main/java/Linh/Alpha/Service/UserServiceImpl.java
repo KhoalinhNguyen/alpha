@@ -3,6 +3,7 @@ package Linh.Alpha.Service;
 import java.util.List;
 import java.util.Optional;
 
+import Linh.Alpha.Dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User saveUser(User user) {
-
 		return this.userRepository.save(user);
 	}
 
@@ -45,13 +45,28 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void updateUser(User oldUser, User updatedUser) {
+	public User updateUser(User oldUser, User updatedUser) {
 		oldUser.setCurrentPosition(updatedUser.getCurrentPosition());
 		oldUser.setDepartment(updatedUser.getDepartment());
 		oldUser.setEmail(updatedUser.getEmail());
 		oldUser.setFirstName(updatedUser.getFirstName());
 		oldUser.setLastName(updatedUser.getLastName());
 		oldUser.setPhoneNumber(updatedUser.getPhoneNumber());
-		userRepository.save(oldUser);
+		return userRepository.save(oldUser);
+	}
+
+	//Transform UserDto into User object, password is not considered yet
+	@Override
+	public User toUser(UserDto userDto) {
+		User user = new User();
+		user.setFirstName(userDto.getFirstName());
+		user.setLastName(userDto.getLastName());
+		user.setEmail(userDto.getEmail());
+		user.setPhoneNumber(userDto.getPhoneNumber());
+		user.setCurrentPosition(userDto.getCurrentPosition());
+		user.setDepartment(userDto.getDepartment());
+		user.setRole(userDto.getRole());
+
+		return user;
 	}
 }

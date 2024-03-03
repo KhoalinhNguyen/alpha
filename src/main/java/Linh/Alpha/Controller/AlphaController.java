@@ -2,6 +2,7 @@ package Linh.Alpha.Controller;
 
 import java.util.List;
 
+import Linh.Alpha.Dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -27,11 +28,11 @@ public class AlphaController {
 		return userService.getUser(id);
 	}
 	
-	@PostMapping(path = "/newUser",
-			consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public User addUser(@RequestBody User user) {
-		return userService.saveUser(user);
+	@PostMapping("/newUser")
+	public UserDto addUser(@RequestBody UserDto userDto) {
+		User user = userService.toUser(userDto);
+		User newUser = userService.saveUser(user);
+		return new UserDto(newUser);
 	}
 	
 	@DeleteMapping("/user/{id}")
@@ -40,8 +41,9 @@ public class AlphaController {
 	}
 	
 	@PutMapping("/user/{id}")
-	public void updateUser(@RequestBody User updatedUser, @PathVariable("id") long id ) {
+	public UserDto updateUser(@RequestBody User updatedUser, @PathVariable("id") long id ) {
 		User oldUser = userService.getUser(id);
-		userService.updateUser(oldUser, updatedUser);
+		return new UserDto(userService.updateUser(oldUser, updatedUser));
+
 	}
 }

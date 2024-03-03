@@ -2,6 +2,7 @@ package Linh.Alpha.Service;
 
 import java.util.List;
 
+import Linh.Alpha.Dto.UserDto;
 import Linh.Alpha.Modell.User;
 
 public interface UserService {
@@ -9,5 +10,6 @@ public interface UserService {
 	User saveUser(User user);
 	User getUser(long id);
 	void deleteUserById(long id);
-	void updateUser(User oldUser, User updatedUser);
+	User updateUser(User oldUser, User updatedUser);
+	User toUser(UserDto userDto);
 }
