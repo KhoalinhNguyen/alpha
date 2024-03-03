@@ -33,7 +33,7 @@ public class SecurityConfiguration {
 			http
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(req ->
-				req.requestMatchers("/alpha/auth/**", "test/**") // white list //remove test later as i was testing with angular
+				req.requestMatchers("/alpha/auth/**", "/alpha/**") // white list //remove test later as i was testing with angular
 						//implement the login function from front end
 				.permitAll()
 				//.requestMatchers(DELETE, "alpha/user/**").hasAnyRole(ADMIN.name()

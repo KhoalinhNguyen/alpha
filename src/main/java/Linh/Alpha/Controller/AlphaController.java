@@ -11,7 +11,7 @@ import Linh.Alpha.Service.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/alpha")
 public class AlphaController {
 
 	@Autowired
