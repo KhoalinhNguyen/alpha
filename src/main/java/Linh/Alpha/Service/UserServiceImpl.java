@@ -23,6 +23,10 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User saveUser(User user) {
+		Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+		if(existingUser.isPresent()){
+			throw new IllegalArgumentException("User already exists with this email!");
+		}
 		return this.userRepository.save(user);
 	}
 

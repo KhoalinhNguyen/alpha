@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/alpha/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
 	@Autowired
