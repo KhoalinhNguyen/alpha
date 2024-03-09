@@ -1,5 +1,6 @@
 package Linh.Alpha.Security.Controller;
 
+import Linh.Alpha.Dto.UserDto;
 import Linh.Alpha.Modell.User;
 import Linh.Alpha.Repository.UserRepository;
 import Linh.Alpha.Security.JwtService;
@@ -62,6 +63,7 @@ public class AuthenticationService {
 		var jwtToken = jwtService.generateToken(user);
 		return AuthenticationResponse.builder()
 				.token(jwtToken)
+				.userDto(new UserDto(user))
 				.build();
 	}
 
