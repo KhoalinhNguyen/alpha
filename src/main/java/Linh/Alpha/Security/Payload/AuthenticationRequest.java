@@ -1,4 +1,4 @@
-package Linh.Alpha.Security.Controller;
+package Linh.Alpha.Security.Payload;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

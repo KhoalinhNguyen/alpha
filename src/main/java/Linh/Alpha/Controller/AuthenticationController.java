@@ -1,9 +1,9 @@
 package Linh.Alpha.Controller;
 
-import Linh.Alpha.Security.Controller.AuthenticationRequest;
-import Linh.Alpha.Security.Controller.AuthenticationResponse;
-import Linh.Alpha.Security.Controller.AuthenticationService;
-import Linh.Alpha.Security.Controller.RegisterRequest;
+import Linh.Alpha.Security.Payload.AuthenticationRequest;
+import Linh.Alpha.Security.Payload.AuthenticationResponse;
+import Linh.Alpha.Security.Payload.AuthenticationService;
+import Linh.Alpha.Security.Payload.RegisterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

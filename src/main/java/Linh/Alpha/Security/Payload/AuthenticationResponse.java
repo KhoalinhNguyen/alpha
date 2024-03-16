@@ -1,4 +1,4 @@
-package Linh.Alpha.Security.Controller;
+package Linh.Alpha.Security.Payload;
 
 import Linh.Alpha.Dto.UserDto;
 import lombok.AllArgsConstructor;
