@@ -15,5 +15,5 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 FROM openjdk:17
 COPY --from=build /home/app/target/alpha-0.0.1-SNAPSHOT.jar /usr/local/lib/alpha.jar
-EXPOSE 8082
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/local/lib/alpha.jar"]
